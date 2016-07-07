@@ -123,14 +123,14 @@
         $panel.inputs.dataParams = createSavedInput('data-params', 'colour:glen');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
 
-        $panel.inputs.dataLocationName = createSavedInput('data-params', 'colour:glen');
-        $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
+        $panel.inputs.dataLocationName = createSavedInput('data-location-name', 'colour:glen');
+        $ul.append($('<li>').append(createInputRow($('<span>').text('Location Name Script'), $panel.inputs.dataLocationName)));
 
-        $panel.inputs.dataLocationCoords = createSavedInput('data-params', 'colour:glen');
-        $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
+        $panel.inputs.dataLocationCoords = createSavedInput('data-location-coords', 'colour:glen');
+        $ul.append($('<li>').append(createInputRow($('<span>').text('Location Coords Script'), $panel.inputs.dataLocationCoords)));
 
-        $panel.inputs.dataLocationPhrase = createSavedInput('data-params', 'colour:glen');
-        $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
+        $panel.inputs.dataLocationPhrase = createSavedInput('data-location-phrase', 'colour:glen');
+        $ul.append($('<li>').append(createInputRow($('<span>').text('Location Phrase Script'), $panel.inputs.dataLocationPhrase)));
 
         $ul.append($('<li>').append($('<a>').text('Inject at selector').on('click', injectWidgetAtSelector)));
 
