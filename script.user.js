@@ -105,7 +105,7 @@
 
         let $panel = $('<div>').addClass('skyscanner-widget-injector-panel');
         let $header = $('<div>').addClass('header').appendTo($panel);
-        let $close = $('<div>').addClass('close').appendTo($header).on('click', hidePanel));
+        let $close = $('<div>').addClass('close').appendTo($header).on('click', hidePanel);
 
         let $ul = $('<ul>').appendTo($panel);
         $ul.append($('<li>').append($('<a>').text('Remove all widgets').on('click', removeAllWidgets)));
