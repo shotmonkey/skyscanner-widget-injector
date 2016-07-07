@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2.1
+// @version      0.2.2
 // @description  Injects widgets
 // @author       Tom Corke
 // @include      *
@@ -156,7 +156,6 @@
         if (e.keyCode === magicCode[enteredCode.length]) {
             e.preventDefault();
             enteredCode.push(e.keyCode);
-            console.log(enteredCode.length + '/' + magicCode.length);
             if (enteredCode.length === magicCode.length) {
                 showPanel();
                 resetCode();
