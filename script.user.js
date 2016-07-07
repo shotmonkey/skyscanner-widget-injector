@@ -84,7 +84,7 @@
 
     function createPanel() {
 
-        let $panel = $('<div>').addClass('widget-injector-panel');
+        let $panel = $('<div>').addClass('skyscanner-widget-injector-panel');
         $panel.append($('<div>').addClass('close').on('click', hidePanel));
 
         let $ul = $('<ul>').appendTo($panel);
