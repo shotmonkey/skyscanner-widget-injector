@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2.7
+// @version      0.2.8
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -116,20 +116,19 @@
     }
 
     function showWidgetCode() {
-        let $wrapper = $('<div>');
 
         let $widget = createWidgetCode();
-        $widget.appendTo($wrapper);
-
-        $wrapper.append('\n');
+        let $widgetWrapper = $('<div>').append($widget);
 
         let $script = $('<script>')
             .attr('src', 'https://gateway.skyscanner.net/widget-server/js/loader.js')
-            .attr('async', '')
-            .appendTo($wrapper);
+            .attr('async', '');
+        let $scriptWrapper = $('<div>').append($script);
 
         $codePanel = getOrCreateCodePanel();
-        $codePanel.code.text($wrapper.html());
+        $codePanel.code.empty();
+        $codePanel.code.append($('<div>').text($widgetWrapper.html()));
+        $codePanel.code.append($('<div>').text($scriptWrapper.html()));
         $codePanel.show();
     }
 
