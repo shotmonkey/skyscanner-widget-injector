@@ -85,7 +85,7 @@
         if (savedValue) {
             $input.val(savedValue);
         } else {
-            $input.val(defaultValue);
+            $input.val(defaultValue || '');
         }
         $input.on('change', () => {
             localStorage.setItem(fullName, $input.val());
@@ -123,13 +123,13 @@
         $panel.inputs.dataParams = createSavedInput('data-params', 'colour:glen');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
 
-        $panel.inputs.dataLocationName = createSavedInput('data-location-name', 'colour:glen');
+        $panel.inputs.dataLocationName = createSavedInput('data-location-name', '');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Name Script'), $panel.inputs.dataLocationName)));
 
-        $panel.inputs.dataLocationCoords = createSavedInput('data-location-coords', 'colour:glen');
+        $panel.inputs.dataLocationCoords = createSavedInput('data-location-coords', '');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Coords Script'), $panel.inputs.dataLocationCoords)));
 
-        $panel.inputs.dataLocationPhrase = createSavedInput('data-location-phrase', 'colour:glen');
+        $panel.inputs.dataLocationPhrase = createSavedInput('data-location-phrase', '');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Phrase Script'), $panel.inputs.dataLocationPhrase)));
 
         $ul.append($('<li>').append($('<a>').text('Inject at selector').on('click', injectWidgetAtSelector)));
