@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.1
+// @version      0.1.1
 // @description  Injects widgets
 // @author       Tom Corke
 // @match        *
