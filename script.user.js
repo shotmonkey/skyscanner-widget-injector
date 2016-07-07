@@ -36,22 +36,41 @@
         }
     }
 
-    function createInjectedWidgetCode() {
+    function createWidgetCode() {
         let $widget = $('<div>');
         $widget.attr('data-skyscanner-widget', $_panel.inputs.dataWidgetType.val());
         $widget.attr('data-locale', $_panel.inputs.dataLocale.val());
         $widget.attr('data-params', $_panel.inputs.dataParams.val());
+
+        let locationNameScript = $_panel.inputs.dataLocationName.val();
+        if(locationNameScript.length>0) {
+            $widget.attr('data-location-name', locationNameScript);
+        }
+
+        let locationCoordsScript = $_panel.inputs.dataLocationCoords.val();
+        if(locationCoordsScript.length>0) {
+            $widget.attr('data-location-coords', locationCoordsScript);
+        }
+
+        let locationPhraseScript = $_panel.inputs.dataLocationPhrase.val();
+        if(locationPhraseScript.length>0) {
+            $widget.attr('data-location-phrase', locationPhraseScript);
+        }
+
         return $widget;
     }
 
     function injectWidgetAtSelector() {
 
-        $injectedWidget = $injectedWidget || createInjectedWidgetCode();
-        $injectedWidget.detach();
+        if($injectedWidget) {
+            $injectedWidget.remove();
+        }
+
+        let $newWidget = $injectedWidget = createWidgetCode();
 
         let selector = $_panel.inputs.selector.val();
         let $el = $(selector);
-        $el.append($injectedWidget);
+        $el.append($newWidget);
 
         if (skyscanner) {
             skyscanner.widgets.load();
@@ -102,6 +121,15 @@
         $ul.append($('<li>').append(createInputRow($('<span>').text('Locale'), $panel.inputs.dataLocale)));
 
         $panel.inputs.dataParams = createSavedInput('data-params', 'colour:glen');
+        $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
+
+        $panel.inputs.dataLocationName = createSavedInput('data-params', 'colour:glen');
+        $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
+
+        $panel.inputs.dataLocationCoords = createSavedInput('data-params', 'colour:glen');
+        $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
+
+        $panel.inputs.dataLocationPhrase = createSavedInput('data-params', 'colour:glen');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Params'), $panel.inputs.dataParams)));
 
         $ul.append($('<li>').append($('<a>').text('Inject at selector').on('click', injectWidgetAtSelector)));
