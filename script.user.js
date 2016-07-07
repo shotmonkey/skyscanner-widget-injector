@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2.3
+// @version      0.2.4
 // @description  Injects widgets
 // @author       Tom Corke
 // @include      *
@@ -101,7 +101,7 @@
         return $row;
     }
 
-    showWidgetCode() {
+    function showWidgetCode() {
         let $wrapper = $('<div>');
         let $widget = createWidgetCode();
         $widget.appendTo($wrapper);
