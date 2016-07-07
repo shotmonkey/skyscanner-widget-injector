@@ -12,6 +12,8 @@
 }
 
 .skyscanner-widget-injector-panel .header {
+    min-width: 0;
+    margin: 0;
     height: 20px;
     background-color: #21c4d9;
     color: white;
