@@ -203,8 +203,6 @@
 
     $(document).on('keydown', e => {
 
-        let handled = false;
-
         if (e.keyCode === magicCode[enteredCode.length]) {
             enteredCode.push(e.keyCode);
             if (enteredCode.length === magicCode.length) {
