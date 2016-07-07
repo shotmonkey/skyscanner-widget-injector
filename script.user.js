@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2.2
+// @version      0.2.3
 // @description  Injects widgets
 // @author       Tom Corke
 // @include      *
@@ -101,13 +101,21 @@
         return $row;
     }
 
+    showWidgetCode() {
+        let $wrapper = $('<div>');
+        let $widget = createWidgetCode();
+        $widget.appendTo($wrapper);
+        alert($wrapper.html());
+    }
+
     function createPanel() {
 
         let $panel = $('<div>').addClass('skyscanner-widget-injector-panel');
         let $header = $('<div>').addClass('header').appendTo($panel);
         let $close = $('<div>').addClass('close').appendTo($header).on('click', hidePanel);
+        let $content = $('<div>').addClass('content').appendTo($panel);
 
-        let $ul = $('<ul>').appendTo($panel);
+        let $ul = $('<ul>').appendTo($content);
         $ul.append($('<li>').append($('<a>').text('Remove all widgets').on('click', removeAllWidgets)));
 
         $panel.inputs = {};
@@ -133,7 +141,8 @@
         $panel.inputs.dataLocationPhrase = createSavedInput('data-location-phrase', '');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Phrase Script'), $panel.inputs.dataLocationPhrase)));
 
-        $ul.append($('<li>').append($('<a>').text('Inject at selector').on('click', injectWidgetAtSelector)));
+        $ul.append($('<li>').append($('<a>').text('Add widget at selector').on('click', injectWidgetAtSelector)));
+        $ul.append($('<li>').append($('<a>').test('Show widget code').on('click', showWidgetCode)));
 
         $panel.appendTo('body');
         return $panel;

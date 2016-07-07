@@ -4,9 +4,9 @@
     right: 0;
     background: white;
     z-index: 9999;
-    border-left: 1px solid #666;
-    border-bottom: 1px solid #666;
-    padding: 0 10px 10px;
+    border: 2px solid #21c4d9;
+    border-bottom-width: 10px;
+    padding: 0;
     box-sizing: border-box;
     font: 12px sans-serif;
 }
@@ -25,12 +25,16 @@
     height: 15px;
 }
 
-.skyscanner-widget-injector-panel .close:after {
+.skyscanner-widget-injector-panel .header .close:after {
     position: absolute;
     top: -5px;
     right: 2.5px;
     content: 'x';
     font: 18px monospace;
+}
+
+.skyscanner-widget-injector-panel .content {
+    padding: 10px 5px;
 }
 
 .skyscanner-widget-injector-panel ul {
@@ -47,7 +51,7 @@
     font: 12px sans-serif;
     color: white;
     background-color: #006982;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
     padding: 3px 6px;
     border-radius: 4px;
