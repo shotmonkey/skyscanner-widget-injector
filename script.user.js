@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2.6
+// @version      0.2.7
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -121,9 +121,11 @@
         let $widget = createWidgetCode();
         $widget.appendTo($wrapper);
 
+        $wrapper.append('\n');
+
         let $script = $('<script>')
             .attr('src', 'https://gateway.skyscanner.net/widget-server/js/loader.js')
-            .attr('async', true)
+            .attr('async', '')
             .appendTo($wrapper);
 
         $codePanel = getOrCreateCodePanel();

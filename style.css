@@ -98,4 +98,5 @@
     padding: 10%;
     font: 16px monospace;
     box-sizing: border-box;
+    white-space: pre-line;
 }
