@@ -1,16 +1,21 @@
 // ==UserScript==
 // @name         B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2
+// @version      0.2.1
 // @description  Injects widgets
 // @author       Tom Corke
 // @include      *
 // @require      https://code.jquery.com/jquery-3.0.0.min.js
-// @grant        none
+// @require      https://gateway.skyscanner.net/widget-server/js/loader.js
+// @resource     css https://github.com/shotmonkey/skyscanner-widget-injector/raw/master/style.css
+// @grant        GM_addStyle
+// @grant        GM_getResourceText
 // ==/UserScript==
 
 (function() {
     'use strict';
+
+    GM_addStyle(GM_getResourceText('css'));
 
     const magicCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
     let enteredCode = [];
@@ -18,7 +23,6 @@
     function resetCode() {
         enteredCode = [];
     }
-
 
     let $_panel = null;
     let $injectedWidget = null;
