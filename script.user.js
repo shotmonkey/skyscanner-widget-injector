@@ -142,7 +142,7 @@
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Phrase Script'), $panel.inputs.dataLocationPhrase)));
 
         $ul.append($('<li>').append($('<a>').text('Add widget at selector').on('click', injectWidgetAtSelector)));
-        $ul.append($('<li>').append($('<a>').test('Show widget code').on('click', showWidgetCode)));
+        $ul.append($('<li>').append($('<a>').text('Show widget code').on('click', showWidgetCode)));
 
         $panel.appendTo('body');
         return $panel;
