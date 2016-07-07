@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2.5
+// @version      0.2.6
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -101,11 +101,34 @@
         return $row;
     }
 
+    function createCodePanel() {
+        let $panel = $('<div>').addClass('skyscanner-widget-injector-code-panel').appendTo('body').hide();
+        $panel.on('click', e => { e.preventDefault(); $panel.hide(); });
+        let $code = $('<code>').appendTo($panel).on('click', (e) => e.stopPropagation());
+        $panel.code = $code;
+        return $panel;
+    }
+
+    let $codePanel = null;
+    function getOrCreateCodePanel() {
+        $codePanel = $codePanel || createCodePanel();
+        return $codePanel;
+    }
+
     function showWidgetCode() {
         let $wrapper = $('<div>');
+
         let $widget = createWidgetCode();
         $widget.appendTo($wrapper);
-        alert($wrapper.html());
+
+        let $script = $('<script>')
+            .attr('src', 'https://gateway.skyscanner.net/widget-server/js/loader.js')
+            .attr('async', true)
+            .appendTo($wrapper);
+
+        $codePanel = getOrCreateCodePanel();
+        $codePanel.code.text($wrapper.html());
+        $codePanel.show();
     }
 
     function createPanel() {
