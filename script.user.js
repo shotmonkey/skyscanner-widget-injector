@@ -104,7 +104,7 @@
     function createCodePanel() {
         let $panel = $('<div>').addClass('skyscanner-widget-injector-code-panel').appendTo('body').hide();
         $panel.on('click', e => { e.preventDefault(); $panel.hide(); });
-        let $code = $('<code>').appendTo($panel).on('click', (e) => e.stopPropagation());
+        let $code = $('<div>').addClass('code').appendTo($panel).on('click', (e) => e.stopPropagation());
         $panel.code = $code;
         return $panel;
     }

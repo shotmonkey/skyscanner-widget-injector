@@ -89,7 +89,7 @@
     box-sizing: border-box;
 }
 
-.skyscanner-widget-injector-code-panel code {
+.skyscanner-widget-injector-code-panel .code {
     width: auto;
     height: auto;
     display: block;
