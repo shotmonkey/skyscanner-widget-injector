@@ -1,13 +1,16 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.2.8
+// @version      0.3.0
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
 // @require      https://code.jquery.com/jquery-3.0.0.min.js
 // @require      https://gateway.skyscanner.net/widget-server/js/loader.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/html.min.js
 // @resource     css https://github.com/shotmonkey/skyscanner-widget-injector/raw/master/style.css
+// @resource     highlight_css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/github.min.css
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // ==/UserScript==
@@ -16,6 +19,7 @@
     'use strict';
 
     GM_addStyle(GM_getResourceText('css'));
+    GM_addStyle(GM_getResourceText('highlight_css'));
 
     const magicCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
     let enteredCode = [];
@@ -127,8 +131,13 @@
 
         $codePanel = getOrCreateCodePanel();
         $codePanel.code.empty();
-        $codePanel.code.append($('<div>').text($widgetWrapper.html()));
-        $codePanel.code.append($('<div>').text($scriptWrapper.html()));
+
+        let highlightedWidgetCode = hljs.highlight('html', $widgetWrapper.html());
+        let highlightedScriptCode = hljs.highlight('html', $scriptWrapper.html());
+
+        $codePanel.code.append($('<div>').html(highlightedWidgetCode.value));
+        $codePanel.code.append($('<div>').html(highlightedScriptCode.value));
+
         $codePanel.show();
     }
 
