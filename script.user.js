@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.8
+// @version      0.3.9
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -20,7 +20,7 @@
     GM_addStyle(GM_getResourceText('css'));
     GM_addStyle(GM_getResourceText('highlight_css'));
 
-    const magicCode = ['38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13'];
+    const magicCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
     let enteredCode = [];
     const magicString = 'magicwidgets';
     let enteredString = '';
@@ -204,7 +204,6 @@
 
         if (e.keyCode === magicCode[enteredCode.length]) {
             enteredCode.push(e.keyCode);
-            console.log('code', enteredCode.length, magicCode.length);
             if (enteredCode.length === magicCode.length) {
                 showPanel();
                 resetCode();
@@ -215,7 +214,6 @@
 
         if (e.key === magicString.substr(enteredString.length, 1)) {
             enteredString = enteredString + e.key;
-            console.log(e, 'string', enteredString.length, magicString.length);
             if (enteredString === magicString) {
                 showPanel();
                 resetString();
