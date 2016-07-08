@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.9
+// @version      0.3.10
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -97,8 +97,8 @@
 
     function createInputRow(labelElement, inputElement) {
         let $row = $('<div>').addClass('input-row');
-        labelElement.addClass('label');
-        inputElement.addClass('input');
+        labelElement.addClass('swip-label');
+        inputElement.addClass('swip-input');
         $row.append(labelElement, inputElement);
         return $row;
     }

@@ -11,6 +11,7 @@
     padding: 0;
     box-sizing: border-box;
     font: 12px sans-serif;
+    text-shadow: 0;
 }
 
 .skyscanner-widget-injector-panel .header {
@@ -42,6 +43,8 @@
     right: 2.5px;
     content: 'x';
     font: 18px monospace;
+    color: white;
+    text-shadow: 0;
 }
 
 .skyscanner-widget-injector-panel .content {
@@ -80,22 +83,24 @@
 .skyscanner-widget-injector-panel .input-row {
     width: 400px;
 }
-.skyscanner-widget-injector-panel .input-row .label  {
+.skyscanner-widget-injector-panel .input-row .swip-label  {
     display: inline-block;
     width: 140px;
     color: black;
     background: none;
     font: 12px sans-serif;
     color: #999;
+    text-align: left;
+    text-shadow: 0;
 }
-.skyscanner-widget-injector-pabel .input-row .input  {
+.skyscanner-widget-injector-pabel .input-row .swip-input  {
     display: inline-block;
     width: 260px;
     position: relative;
     text-align: right;
 }
 
-.skyscanner-widget-injector-panel input {
+.skyscanner-widget-injector-pabel .input-row .swip-input input {
     display: inline-block;
     width: 260px;
     font: 12px sans-serif;
