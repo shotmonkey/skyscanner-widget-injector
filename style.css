@@ -4,14 +4,12 @@
     right: 0;
     background: white;
     z-index: 9999;
-    border-style: solid;
-    border-color: #34363d;
-    border-width: 0 2px 10px 2px;
-    border-radius: 0 0 10px 10px;
+    border-style: none
     padding: 0;
     box-sizing: border-box;
     font: 12px sans-serif;
     text-shadow: 0;
+    box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);
 }
 
 .skyscanner-widget-injector-panel .header {
@@ -24,7 +22,7 @@
 
 .skyscanner-widget-injector-panel .header:after {
     content: 'Skyscanner B2B Widget Injector';
-    margin: 2px;
+    margin: 3px;
     display: inline-block;
 }
 
@@ -40,7 +38,7 @@
 .skyscanner-widget-injector-panel .header .close:after {
     position: absolute;
     top: -3px;
-    right: 2.5px;
+    right: 4px;
     content: 'x';
     font: 18px monospace;
     color: white;
