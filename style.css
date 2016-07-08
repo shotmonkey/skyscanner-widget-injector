@@ -4,8 +4,10 @@
     right: 0;
     background: white;
     z-index: 9999;
-    border: 2px solid #21c4d9;
-    border-bottom-width: 10px;
+    border-style: solid;
+    border-color: #34363d;
+    border-width: 0 2px 10px 2px;
+    border-radius: 0 0 10px 10px;
     padding: 0;
     box-sizing: border-box;
     font: 12px sans-serif;
@@ -15,8 +17,14 @@
     min-width: 0;
     margin: 0;
     height: 20px;
-    background-color: #21c4d9;
+    background-color: #34363d;
     color: white;
+}
+
+.skyscanner-widget-injector-panel .header:after {
+    content: 'Skyscanner B2B Widget Injector';
+    margin: 2px;
+    display: inline-block;
 }
 
 .skyscanner-widget-injector-panel .header .close {
@@ -25,18 +33,20 @@
     right: 0;
     width: 15px;
     height: 15px;
+    cursor: pointer;
 }
 
 .skyscanner-widget-injector-panel .header .close:after {
     position: absolute;
-    top: -5px;
+    top: -3px;
     right: 2.5px;
     content: 'x';
     font: 18px monospace;
 }
 
 .skyscanner-widget-injector-panel .content {
-    padding: 10px 5px;
+    padding: 5px;
+    overflow: hidden;
 }
 
 .skyscanner-widget-injector-panel ul {
@@ -47,6 +57,9 @@
 .skyscanner-widget-injector-panel ul li {
     padding: 0;
     margin: 5px 0;
+    float:right;
+    clear: both;
+    list-style-type: none;
 }
 
 .skyscanner-widget-injector-panel a {
@@ -55,9 +68,13 @@
     background-color: #006982;
     text-decoration: none;
     cursor: pointer;
-    padding: 3px 6px;
+    padding: 3px 10px;
+    text-transform: uppercase;
     border-radius: 4px;
     display: inline-block;
+}
+.skyscanner-widget-injector-panel a.warning {
+    background-color: red;
 }
 
 .skyscanner-widget-injector-panel .input-row {
@@ -69,17 +86,23 @@
     color: black;
     background: none;
     font: 12px sans-serif;
+    color: #999;
 }
 .skyscanner-widget-injector-pabel .input-row .input  {
     display: inline-block;
-    width: 240px;
+    width: 260px;
+    position: relative;
+    text-align: right;
 }
 
 .skyscanner-widget-injector-panel input {
-    width: 240px;
+    display: inline-block;
+    width: 260px;
     font: 12px sans-serif;
-    padding: 4px;
+    padding: 3px;
+    margin: 0;
     box-sizing: border-box;
+    font-family: monospace;
 }
 
 .skyscanner-widget-injector-code-panel {

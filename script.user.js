@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.2
+// @version      0.3.7
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -146,7 +146,7 @@
         let $content = $('<div>').addClass('content').appendTo($panel);
 
         let $ul = $('<ul>').appendTo($content);
-        $ul.append($('<li>').append($('<a>').text('Remove all widgets').on('click', removeAllWidgets)));
+        $ul.append($('<li>').append($('<a>').addClass('warning').text('Remove all widgets').on('click', removeAllWidgets)));
 
         $panel.inputs = {};
 
@@ -204,6 +204,7 @@
 
         if (e.keyCode === magicCode[enteredCode.length]) {
             enteredCode.push(e.keyCode);
+            console.log('code', enteredCode.length, magicCode.length);
             if (enteredCode.length === magicCode.length) {
                 showPanel();
                 resetCode();
@@ -214,6 +215,7 @@
 
         if (e.key === magicString.substr(enteredString.length, 1)) {
             enteredString = enteredString + e.key;
+            console.log('string', enteredString.length, magicString.length);
             if (enteredString === magicString) {
                 showPanel();
                 resetString();
