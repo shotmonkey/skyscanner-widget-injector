@@ -1,14 +1,13 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.1
+// @version      0.3.2
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
 // @require      https://code.jquery.com/jquery-3.0.0.min.js
 // @require      https://gateway.skyscanner.net/widget-server/js/loader.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js
-// @require      https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/html.min.js
 // @resource     css https://github.com/shotmonkey/skyscanner-widget-injector/raw/master/style.css
 // @resource     highlight_css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/github.min.css
 // @grant        GM_addStyle
@@ -27,6 +26,7 @@
     let enteredString = '';
 
     let $_panel = null;
+    let $codePanel = null;
     let $injectedWidget = null;
 
     function removeAllWidgets() {
@@ -111,7 +111,6 @@
         return $panel;
     }
 
-    let $codePanel = null;
     function getOrCreateCodePanel() {
         $codePanel = $codePanel || createCodePanel();
         return $codePanel;
@@ -175,7 +174,7 @@
         $ul.append($('<li>').append($('<a>').text('Add widget at selector').on('click', injectWidgetAtSelector)));
         $ul.append($('<li>').append($('<a>').text('Show widget code').on('click', showWidgetCode)));
 
-        $panel.appendTo('body');
+        $panel.appendTo('body').hide();
         return $panel;
     }
 
@@ -190,7 +189,7 @@
 
     function showPanel() {
         let $panel = getOrCreatePanel();
-        $panel.hide().slideDown();
+        $panel.slideDown();
     }
 
     function resetCode() {
