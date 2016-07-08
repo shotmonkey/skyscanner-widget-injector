@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.7
+// @version      0.3.8
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -215,7 +215,7 @@
 
         if (e.key === magicString.substr(enteredString.length, 1)) {
             enteredString = enteredString + e.key;
-            console.log('string', enteredString.length, magicString.length);
+            console.log(e, 'string', enteredString.length, magicString.length);
             if (enteredString === magicString) {
                 showPanel();
                 resetString();
@@ -224,6 +224,4 @@
             resetString();
         }
     });
-
-    // Your code here...
 })();
