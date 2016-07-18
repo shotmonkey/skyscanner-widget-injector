@@ -64,7 +64,7 @@
     list-style-type: none;
 }
 
-.skyscanner-widget-injector-panel a {
+.skyscanner-widget-injector-panel a.button {
     font: 12px sans-serif;
     color: white;
     background-color: #006982;
@@ -142,6 +142,8 @@
     margin-top: 10px;
     padding: 10px;
     background: white;
+    display: block;
+    width: 100%;
 }
 .skyscanner-widget-injector-panel .sandbox .skyscanner-widget-container {
     display: inline-block;

@@ -147,7 +147,7 @@
         let $sandbox = $('<div>').addClass('sandbox').appendTo($panel);
 
         let $ul = $('<ul>').appendTo($content);
-        $ul.append($('<li>').append($('<a>').addClass('warning').text('Remove all widgets').on('click', removeAllWidgets)));
+        $ul.append($('<li>').append($('<a>').addClass('button warning').text('Remove all widgets').on('click', removeAllWidgets)));
 
         $panel.inputs = {};
 
@@ -172,8 +172,8 @@
         $panel.inputs.dataLocationPhrase = createSavedInput('data-location-phrase', '');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Phrase Script'), $panel.inputs.dataLocationPhrase)));
 
-        $ul.append($('<li>').append($('<a>').text('Add widget at selector').on('click', injectWidgetAtSelector)));
-        $ul.append($('<li>').append($('<a>').text('Show widget code').on('click', showWidgetCode)));
+        $ul.append($('<li>').append($('<a>').addClass('button').text('Add widget at selector').on('click', injectWidgetAtSelector)));
+        $ul.append($('<li>').append($('<a>').addClass('button').text('Show widget code').on('click', showWidgetCode)));
 
         $panel.appendTo('body').hide();
         return $panel;
