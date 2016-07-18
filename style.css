@@ -93,14 +93,14 @@
 }
 .skyscanner-widget-injector-panel .input-row .swip-input  {
     display: inline-block;
-    width: 260px;
+    width: 250px;
     position: relative;
     text-align: right;
 }
 
 .skyscanner-widget-injector-panel .input-row .swip-input input {
     display: inline-block;
-    width: 260px;
+    width: 250px;
     font: 12px sans-serif;
     padding: 3px;
     margin: 0;
