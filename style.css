@@ -81,7 +81,9 @@
 
 .skyscanner-widget-injector-panel .input-row {
     width: 400px;
+    margin: 5px 0 0;
 }
+
 .skyscanner-widget-injector-panel .input-row .swip-label  {
     all: initial;
     display: inline-block;
@@ -143,6 +145,7 @@
     box-sizing: border-box;
     border-top: 1px solid #999;
 }
+
 .skyscanner-widget-injector-panel .sandbox .skyscanner-widget-container {
     display: inline-block;
     width: 100%;
