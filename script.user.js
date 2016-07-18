@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.14
+// @version      0.3.15
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -38,25 +38,73 @@
         }
     }
 
-    function createWidgetCode() {
+    function getWidgetConfig() {
+        return {
+            selector: $_panel.inputs.selector.val(),
+            type: $_panel.inputs.dataWidgetType.val(),
+            locale: $_panel.inputs.dataLocale.val(),
+            params: $_panel.inputs.dataParams.val(),
+            location: {
+                name: $_panel.inputs.dataLocationName.val(),
+                coords: $_panel.inputs.dataLocationCoords.val(),
+                phrase: $_panel.inputs.dataLocationPhrase.val()
+            }
+        };
+    }
+
+    function importConfig(code) {
+        getOrCreatePanel();
+        try {
+            console.log(code);
+            const decoded = atob(code);
+            const config = JSON.parse(decoded);
+            $_panel.inputs.selector.val(config.selector);
+            $_panel.inputs.dataWidgetType.val(config.type);
+            $_panel.inputs.dataLocale.val(config.locale);
+            $_panel.inputs.dataParams.val(config.params);
+            $_panel.inputs.dataLocationName.val(config.location.name);
+            $_panel.inputs.dataLocationCoords.val(config.location.coords);
+            $_panel.inputs.dataLocationPhrase.val(config.location.phrase);
+            return true;
+        } catch(e) {
+            console.error(e);
+        }
+        return false;
+    }
+
+    const urlConfigPattern = /(?:[?&])?skyscannerWidgetInjectorConfig=([^&]+)/;
+
+    function tryImportConfigFromQuery() {
+        if (urlConfigPattern.test(document.URL)) {
+            const matches = document.URL.match(urlConfigPattern);
+            return importConfig(matches[1]);
+        }
+        return false;
+    }
+
+    function exportConfig() {
+        let config = getWidgetConfig();
+        let code = btoa(JSON.stringify(config));
+        window.location.hash = (window.location.hash || '').replace(urlConfigPattern, '') + '&skyscannerWidgetInjectorConfig=' + code
+        console.log(window.URL);
+    }
+
+    function createWidgetCode(config) {
         let $widget = $('<div>');
-        $widget.attr('data-skyscanner-widget', $_panel.inputs.dataWidgetType.val());
-        $widget.attr('data-locale', $_panel.inputs.dataLocale.val());
-        $widget.attr('data-params', $_panel.inputs.dataParams.val());
+        $widget.attr('data-skyscanner-widget', config.type);
+        $widget.attr('data-locale', config.locale);
+        $widget.attr('data-params', config.params);
 
-        let locationNameScript = $_panel.inputs.dataLocationName.val();
-        if(locationNameScript.length>0) {
-            $widget.attr('data-location-name', locationNameScript);
+        if(config.location.name) {
+            $widget.attr('data-location-name', config.location.name);
         }
 
-        let locationCoordsScript = $_panel.inputs.dataLocationCoords.val();
-        if(locationCoordsScript.length>0) {
-            $widget.attr('data-location-coords', locationCoordsScript);
+        if(config.location.coords) {
+            $widget.attr('data-location-coords', config.location.coords);
         }
 
-        let locationPhraseScript = $_panel.inputs.dataLocationPhrase.val();
-        if(locationPhraseScript.length>0) {
-            $widget.attr('data-location-phrase', locationPhraseScript);
+        if(config.location.phrase) {
+            $widget.attr('data-location-phrase', config.location.phrase);
         }
 
         return $widget;
@@ -68,10 +116,11 @@
             $injectedWidget.remove();
         }
 
-        let $newWidget = $injectedWidget = createWidgetCode();
+        let config = getWidgetConfig();
 
-        let selector = $_panel.inputs.selector.val();
-        let $el = $(selector);
+        let $newWidget = $injectedWidget = createWidgetCode(config);
+
+        let $el = $(config.selector);
         $el.append($newWidget);
 
         if (skyscanner) {
@@ -118,7 +167,9 @@
 
     function showWidgetCode() {
 
-        let $widget = createWidgetCode();
+        let config = getWidgetConfig();
+
+        let $widget = createWidgetCode(config);
         let $widgetWrapper = $('<div>').append($widget);
 
         let $script = $('<script>')
@@ -136,6 +187,8 @@
         $codePanel.code.append($('<div>').html(highlightedScriptCode.value));
 
         $codePanel.show();
+
+        exportConfig();
     }
 
     function createPanel() {
@@ -223,4 +276,9 @@
             resetString();
         }
     });
+
+    if (tryImportConfigFromQuery()) {
+        showPanel();
+    }
+
 })();
