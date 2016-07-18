@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.13
+// @version      0.3.14
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -151,10 +151,10 @@
 
         $panel.inputs = {};
 
-        $panel.inputs.selector = createSavedInput('selector');
+        $panel.inputs.selector = createSavedInput('selector', '.skyscanner-widget-injector-panel .sandbox');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Selector'), $panel.inputs.selector)));
 
-        $panel.inputs.dataWidgetType = createSavedInput('data-skyscanner-widget', 'BasicWidget');
+        $panel.inputs.dataWidgetType = createSavedInput('data-skyscanner-widget', 'LocationWidget');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Widget Type'), $panel.inputs.dataWidgetType)));
 
         $panel.inputs.dataLocale = createSavedInput('data-locale', 'en-GB');
