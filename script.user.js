@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.12
+// @version      0.3.13
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -144,6 +144,7 @@
         let $header = $('<div>').addClass('header').appendTo($panel);
         let $close = $('<div>').addClass('close').appendTo($header).on('click', hidePanel);
         let $content = $('<div>').addClass('content').appendTo($panel);
+        let $sandbox = $('<div>').addClass('sandbox').appendTo($panel);
 
         let $ul = $('<ul>').appendTo($content);
         $ul.append($('<li>').append($('<a>').addClass('warning').text('Remove all widgets').on('click', removeAllWidgets)));
