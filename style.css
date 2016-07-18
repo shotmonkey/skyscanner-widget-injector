@@ -91,14 +91,14 @@
     text-align: left;
     text-shadow: 0;
 }
-.skyscanner-widget-injector-pabel .input-row .swip-input  {
+.skyscanner-widget-injector-panel .input-row .swip-input  {
     display: inline-block;
     width: 260px;
     position: relative;
     text-align: right;
 }
 
-.skyscanner-widget-injector-pabel .input-row .swip-input input {
+.skyscanner-widget-injector-panel .input-row .swip-input input {
     display: inline-block;
     width: 260px;
     font: 12px sans-serif;
