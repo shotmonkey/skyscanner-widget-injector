@@ -252,6 +252,8 @@
 
         let $tab = $('<div>').attr('id', 'skyscanner-widget-injector-tab');
 
+        $tab.appendTo('body').hide();
+
         return $tab;
 
     }
