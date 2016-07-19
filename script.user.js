@@ -271,7 +271,7 @@
 
     function showTab() {
         hidePanel();
-        getOrCreateTab().slideDown();
+        getOrCreateTab().fadeIn();
     }
 
     function resetCode() {
