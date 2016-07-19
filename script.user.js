@@ -26,7 +26,9 @@
     let enteredString = '';
 
     let $_panel = null;
-    let $codePanel = null;
+    let $_tab = null;
+    let $_codePanel = null;
+
     let $injectedWidget = null;
 
     function removeAllWidgets() {
@@ -153,7 +155,7 @@
     }
 
     function createCodePanel() {
-        let $panel = $('<div>').addClass('skyscanner-widget-injector-code-panel').appendTo('body').hide();
+        let $panel = $('<div>').attr('id', 'skyscanner-widget-injector-code-panel').appendTo('body').hide();
         $panel.on('click', e => { e.preventDefault(); $panel.hide(); });
         let $code = $('<div>').addClass('code').appendTo($panel).on('click', (e) => e.stopPropagation());
         $panel.code = $code;
@@ -161,8 +163,8 @@
     }
 
     function getOrCreateCodePanel() {
-        $codePanel = $codePanel || createCodePanel();
-        return $codePanel;
+        $_codePanel = $_codePanel || createCodePanel();
+        return $_codePanel;
     }
 
     function showWidgetCode() {
@@ -193,14 +195,14 @@
 
     function createPanel() {
 
-        let $panel = $('<div>').addClass('skyscanner-widget-injector-panel');
+        let $panel = $('<div>').attr('id', 'skyscanner-widget-injector-panel');
         let $header = $('<div>').addClass('header').appendTo($panel);
         let $close = $('<div>').addClass('close').appendTo($header).on('click', hidePanel);
         let $content = $('<div>').addClass('content').appendTo($panel);
         let $sandbox = $('<div>').addClass('sandbox').appendTo($panel);
 
         let $ul = $('<ul>').appendTo($content);
-        $ul.append($('<li>').append($('<a>').addClass('button warning').text('Remove all widgets').on('click', removeAllWidgets)));
+        $ul.append($('<li>').append($('<a>').addClass('swip-button warning').text('Remove all widgets').on('click', removeAllWidgets)));
 
         $panel.inputs = {};
 
@@ -225,8 +227,8 @@
         $panel.inputs.dataLocationPhrase = createSavedInput('data-location-phrase', '');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Phrase Script'), $panel.inputs.dataLocationPhrase)));
 
-        $ul.append($('<li>').append($('<a>').addClass('button').text('Add widget at selector').on('click', injectWidgetAtSelector)));
-        $ul.append($('<li>').append($('<a>').addClass('button').text('Show widget code').on('click', showWidgetCode)));
+        $ul.append($('<li>').append($('<a>').addClass('swip-button').text('Add widget at selector').on('click', injectWidgetAtSelector)));
+        $ul.append($('<li>').append($('<a>').addClass('swip-button').text('Show widget code').on('click', showWidgetCode)));
 
         $panel.appendTo('body').hide();
         return $panel;
@@ -238,12 +240,34 @@
     }
 
     function hidePanel() {
-        $_panel.slideUp();
+        $_panel && $_panel.hide();
     }
 
     function showPanel() {
-        let $panel = getOrCreatePanel();
-        $panel.slideDown();
+        hideTab();
+        getOrCreatePanel().slideDown();
+    }
+
+    function createTab() {
+
+        let $tab = $('<div>').attr('id', 'skyscanner-widget-injector-tab');
+
+        return $tab;
+
+    }
+
+    function getOrCreateTab() {
+        $_tab = $_tab || createTab();
+        return $_tab;
+    }
+
+    function hideTab() {
+        $_tab && $_tab.hide();
+    }
+
+    function showTab() {
+        hidePanel();
+        getOrCreatePanel().slideDown();
     }
 
     function resetCode() {
@@ -276,6 +300,8 @@
             resetString();
         }
     });
+
+    showTab();
 
     if (tryImportConfigFromQuery()) {
         showPanel();

@@ -1,4 +1,28 @@
-.skyscanner-widget-injector-panel {
+#skyscanner-widget-injector-tab {
+    position: fixed;
+    top: 0;
+    right: 5px;
+    width: 56px;
+    height: 20px;
+    background: #006982;
+    display: block;
+    z-index: 10000;
+    border-radius: 0 0 5px 5px;
+}
+#skyscanner-widget-injector-tab:hover {
+    background: #0099b2;
+    cursor: pointer;
+}
+#skyscanner-widget-injector-tab:after {
+    content: 'widgets';
+    color: white;
+    font: 10px monospace;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}
+
+#skyscanner-widget-injector-panel {
     position: fixed;
     top: 0;
     right: 0;
@@ -12,7 +36,7 @@
     box-shadow: 0 0 50px 0 rgba(0,0,0,0.5);
 }
 
-.skyscanner-widget-injector-panel .header {
+#skyscanner-widget-injector-panel .header {
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -21,13 +45,13 @@
     color: white;
 }
 
-.skyscanner-widget-injector-panel .header:after {
+#skyscanner-widget-injector-panel .header:after {
     content: 'Skyscanner B2B Widget Injector';
     margin: 3px;
     display: inline-block;
 }
 
-.skyscanner-widget-injector-panel .header .close {
+#skyscanner-widget-injector-panel .header .close {
     position: absolute;
     top: 0;
     right: 0;
@@ -36,7 +60,7 @@
     cursor: pointer;
 }
 
-.skyscanner-widget-injector-panel .header .close:after {
+#skyscanner-widget-injector-panel .header .close:after {
     position: absolute;
     top: -3px;
     right: 4px;
@@ -46,17 +70,17 @@
     text-shadow: 0;
 }
 
-.skyscanner-widget-injector-panel .content {
+#skyscanner-widget-injector-panel .content {
     padding: 5px;
     overflow: hidden;
 }
 
-.skyscanner-widget-injector-panel ul {
+#skyscanner-widget-injector-panel ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.skyscanner-widget-injector-panel ul li {
+#skyscanner-widget-injector-panel ul li {
     padding: 0;
     margin: 0;
     float:right;
@@ -64,10 +88,12 @@
     list-style-type: none;
 }
 
-.skyscanner-widget-injector-panel a.button {
+#skyscanner-widget-injector-panel a.swip-button {
     font: 12px sans-serif;
     color: white;
     background-color: #006982;
+    background: linear-gradient(to bottom, #0099b2, #006982);
+    outline: 0 !important;
     text-decoration: none;
     cursor: pointer;
     padding: 3px 10px;
@@ -75,17 +101,19 @@
     border-radius: 4px;
     display: inline-block;
     margin-top: 5px;
+    box-shadow: none;
 }
-.skyscanner-widget-injector-panel a.warning {
+#skyscanner-widget-injector-panel a.swip-button.warning {
     background-color: red;
+    background: linear-gradient(to bottom, #ff3030, #ff0000);
 }
 
-.skyscanner-widget-injector-panel .input-row {
+#skyscanner-widget-injector-panel .input-row {
     width: 400px;
     margin: 5px 0 0;
 }
 
-.skyscanner-widget-injector-panel .input-row .swip-label  {
+#skyscanner-widget-injector-panel .input-row .swip-label  {
     all: initial;
     display: inline-block;
     width: 140px;
@@ -98,7 +126,7 @@
 }
 
 
-.skyscanner-widget-injector-panel .input-row input.swip-input {
+#skyscanner-widget-injector-panel .input-row input.swip-input {
     all: initial;
     display: inline-block;
     width: 250px;
@@ -110,6 +138,11 @@
     border: 1px solid #999;
     float: right;
     text-align: right;
+}
+
+#skyscanner-widget-injector-panel .sandbox .skyscanner-widget-container {
+    display: inline-block;
+    width: 100%;
 }
 
 .skyscanner-widget-injector-code-panel {
@@ -136,7 +169,7 @@
     white-space: pre-line;
 }
 
-.skyscanner-widget-injector-panel .sandbox {
+#skyscanner-widget-injector-panel .sandbox {
     all: initial;
     margin-top: 10px;
     padding: 10px;
@@ -145,9 +178,4 @@
     width: 100%;
     box-sizing: border-box;
     border-top: 1px solid #999;
-}
-
-.skyscanner-widget-injector-panel .sandbox .skyscanner-widget-container {
-    display: inline-block;
-    width: 100%;
 }
