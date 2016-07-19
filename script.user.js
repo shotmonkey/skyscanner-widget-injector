@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.16
+// @version      0.3.17
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -267,7 +267,7 @@
 
     function showTab() {
         hidePanel();
-        getOrCreatePanel().slideDown();
+        getOrCreateTab().slideDown();
     }
 
     function resetCode() {
