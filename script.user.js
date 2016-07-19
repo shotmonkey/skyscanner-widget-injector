@@ -197,7 +197,7 @@
 
         let $panel = $('<div>').attr('id', 'skyscanner-widget-injector-panel');
         let $header = $('<div>').addClass('header').appendTo($panel);
-        let $close = $('<div>').addClass('close').appendTo($header).on('click', hidePanel);
+        let $close = $('<div>').addClass('close').appendTo($header).on('click', showTab);
         let $content = $('<div>').addClass('content').appendTo($panel);
         let $sandbox = $('<div>').addClass('sandbox').appendTo($panel);
 
@@ -241,7 +241,6 @@
 
     function hidePanel() {
         $_panel && $_panel.hide();
-        showTab();
     }
 
     function showPanel() {
