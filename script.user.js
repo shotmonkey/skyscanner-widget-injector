@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.17
+// @version      0.3.18
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -241,6 +241,7 @@
 
     function hidePanel() {
         $_panel && $_panel.hide();
+        showTab();
     }
 
     function showPanel() {
@@ -253,6 +254,8 @@
         let $tab = $('<div>').attr('id', 'skyscanner-widget-injector-tab');
 
         $tab.appendTo('body').hide();
+
+        $tab.on('click', showPanel);
 
         return $tab;
 
