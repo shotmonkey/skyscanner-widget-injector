@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.19
+// @version      0.3.20
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
