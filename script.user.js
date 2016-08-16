@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Skyscanner B2B Widget Injector
 // @namespace    http://tomcorke.com
-// @version      0.3.20
+// @version      0.3.21
 // @description  Test utility for Skyscanner B2B Widgets
 // @author       Tom Corke
 // @include      *
@@ -49,7 +49,8 @@
             location: {
                 name: $_panel.inputs.dataLocationName.val(),
                 coords: $_panel.inputs.dataLocationCoords.val(),
-                phrase: $_panel.inputs.dataLocationPhrase.val()
+                phrase: $_panel.inputs.dataLocationPhrase.val(),
+                iataCode: $_panel.inputs.dataLocationIataCode.val()
             }
         };
     }
@@ -67,6 +68,7 @@
             $_panel.inputs.dataLocationName.val(config.location.name);
             $_panel.inputs.dataLocationCoords.val(config.location.coords);
             $_panel.inputs.dataLocationPhrase.val(config.location.phrase);
+            $_panel.inputs.dataLocationIataCode.val(config.location.iataCode);
             return true;
         } catch(e) {
             console.error(e);
@@ -107,6 +109,10 @@
 
         if(config.location.phrase) {
             $widget.attr('data-location-phrase', config.location.phrase);
+        }
+
+        if(config.location.iataCode) {
+            $widget.attr('data-location-iata-code', config.location.iataCode);
         }
 
         return $widget;
@@ -226,6 +232,9 @@
 
         $panel.inputs.dataLocationPhrase = createSavedInput('data-location-phrase', '');
         $ul.append($('<li>').append(createInputRow($('<span>').text('Location Phrase Script'), $panel.inputs.dataLocationPhrase)));
+
+        $panel.inputs.dataLocationIataCode = createSavedInput('data-location-iata-code', '');
+        $ul.append($('<li>').append(createInputRow($('<span>').text('Location IATA Code Script'), $panel.inputs.dataLocationIataCode)));
 
         $ul.append($('<li>').append($('<a>').addClass('swip-button').text('Add widget at selector').on('click', injectWidgetAtSelector)));
         $ul.append($('<li>').append($('<a>').addClass('swip-button').text('Show widget code').on('click', showWidgetCode)));
